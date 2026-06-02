@@ -7,7 +7,7 @@ app = FastAPI()
 
 # URL de EMBED del formulario (con /embed/, no solo /form).
 # Se obtiene en Airtable: "Share form" -> "Embed this form on your site".
-EMBED_URL = "https://airtable.com/embed/appLVSEg1Y2zIwvuM/shr8qVEafQVoP8FT6"
+EMBED_URL = "https://airtable.com/embed/appLVSEg1Y2zIwvuM/pagwbdSKFwHyLLTTE/form"
 
 
 @app.get("/form", response_class=HTMLResponse)
