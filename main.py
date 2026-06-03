@@ -67,7 +67,7 @@ async def form():
         }
         .subtitle {
             font-size: 13px;
-            color: #2563eb;
+            color: #6b7280;
             line-height: 1.55;
             margin-bottom: 28px;
         }
