@@ -123,16 +123,33 @@ async def submit(
         "Authorization": f"Bearer {AIRTABLE_TOKEN}",
         "Content-Type": "application/json",
     }
-    # typecast=True hace que Airtable adapte los tipos automaticamente.
     payload = {"fields": fields, "typecast": True}
 
-    resp = requests.post(url, json=payload, headers=headers, timeout=10)
+    debug_info = (
+        f"URL: {url}\n"
+        f"BASE_ID: {AIRTABLE_BASE_ID}\n"
+        f"TABLE: {AIRTABLE_TABLE}\n"
+        f"TOKEN configurado: {'SI' if AIRTABLE_TOKEN else 'NO'}\n"
+        f"Campos enviados: {fields}"
+    )
+
+    try:
+        resp = requests.post(url, json=payload, headers=headers, timeout=10)
+    except Exception as exc:
+        print("EXCEPCION al llamar Airtable:", exc)
+        return HTMLResponse(
+            f"<h2>Excepcion al conectar con Airtable</h2>"
+            f"<pre>{exc}</pre>"
+            f"<hr><pre>{debug_info}</pre>",
+            status_code=500,
+        )
 
     if resp.status_code not in (200, 201):
-        # Si Airtable rechaza, mostramos el error para poder diagnosticarlo.
         print("ERROR Airtable:", resp.status_code, resp.text)
         return HTMLResponse(
-            f"<h2>DEBUG Airtable {resp.status_code}</h2><pre>{resp.text}</pre>",
+            f"<h2>Error Airtable {resp.status_code}</h2>"
+            f"<pre>{resp.text}</pre>"
+            f"<hr><pre>{debug_info}</pre>",
             status_code=500,
         )
 
