@@ -147,24 +147,26 @@ async def form():
     <div class="card">
         <!-- Logo TCI -->
         <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 62" width="175" height="52" aria-label="TCI">
-                <!-- Espiral exterior - gris -->
-                <path d="M31 4 A27 27 0 1 0 4 31" fill="none" stroke="#94a3b8" stroke-width="7" stroke-linecap="round"/>
-                <!-- Espiral media - verde claro -->
-                <path d="M31 12 A19 19 0 1 0 12 31" fill="none" stroke="#86efac" stroke-width="6" stroke-linecap="round"/>
-                <!-- Espiral interior - verde medio -->
-                <path d="M31 20 A11 11 0 1 0 20 31" fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round"/>
-                <!-- Espiral nucleo - verde oscuro -->
-                <path d="M31 27 A4 4 0 1 0 27 31" fill="none" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
-                <!-- Texto T -->
-                <line x1="72" y1="14" x2="92" y2="14" stroke="#134e30" stroke-width="5.5" stroke-linecap="round"/>
-                <line x1="82" y1="14" x2="82" y2="48" stroke="#134e30" stroke-width="5.5" stroke-linecap="round"/>
-                <!-- Texto C -->
-                <path d="M115 16 A18 18 0 1 0 115 46" fill="none" stroke="#134e30" stroke-width="5.5" stroke-linecap="round"/>
-                <!-- Texto I -->
-                <line x1="148" y1="14" x2="148" y2="48" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
-                <!-- Punto final -->
-                <rect x="157" y="42" width="7" height="7" rx="1" fill="#134e30"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 76" width="210" height="80" aria-label="TCI">
+                <!-- ESPIRAL: 4 arcos de 270° entrelazados, centro (36,40), radio 23 -->
+                <!-- Gris (fondo) -->
+                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#8195a4" stroke-width="9" stroke-linecap="round"/>
+                <!-- Verde claro (rotado 90°) -->
+                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#8dd09b" stroke-width="9" stroke-linecap="round" transform="rotate(90 36 40)"/>
+                <!-- Menta (rotado 180°) -->
+                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#7ec8bf" stroke-width="9" stroke-linecap="round" transform="rotate(180 36 40)"/>
+                <!-- Verde oscuro (frente, rotado 270°) -->
+                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#143828" stroke-width="9" stroke-linecap="round" transform="rotate(270 36 40)"/>
+                <!-- T: cuadrado acento, barra horizontal, palo vertical -->
+                <rect x="87" y="7"  width="8"  height="8"  fill="#143828"/>
+                <rect x="79" y="18" width="34" height="7"  fill="#143828"/>
+                <rect x="93" y="25" width="7"  height="41" fill="#143828"/>
+                <!-- C: semicirculo gris, abre a la derecha -->
+                <path d="M 145 18 A 25 25 0 0 0 145 68" fill="none" stroke="#8195a4" stroke-width="8" stroke-linecap="butt"/>
+                <!-- I: barra vertical gris -->
+                <rect x="161" y="18" width="8" height="50" fill="#8195a4"/>
+                <!-- Punto: cuadrado verde oscuro -->
+                <rect x="178" y="59" width="10" height="10" fill="#143828"/>
             </svg>
         </div>
 
