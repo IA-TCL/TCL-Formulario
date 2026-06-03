@@ -38,54 +38,171 @@ async def form():
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulario</title>
+    <title>Teletrabajo</title>
     <style>
-        * { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-            background: #f4f5f7; margin: 0; padding: 24px;
-            display: flex; justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #dde3ea;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 16px;
         }
-        form {
-            background: #fff; padding: 32px; border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,.08);
-            width: 100%; max-width: 480px;
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px 48px 36px;
+            width: 100%;
+            max-width: 820px;
+            box-shadow: 0 4px 28px rgba(0,0,0,.10);
         }
-        h1 { font-size: 22px; margin: 0 0 24px; color: #1f2937; }
-        label { display: block; font-size: 14px; font-weight: 600;
-                color: #374151; margin: 16px 0 6px; }
-        input {
-            width: 100%; padding: 11px 12px; font-size: 15px;
-            border: 1px solid #d1d5db; border-radius: 8px;
+        .logo { margin-bottom: 28px; }
+        h1 {
+            font-size: 30px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 10px;
         }
-        input:focus { outline: none; border-color: #2563eb;
-                      box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
-        button {
-            margin-top: 24px; width: 100%; padding: 12px;
-            font-size: 16px; font-weight: 600; color: #fff;
-            background: #2563eb; border: none; border-radius: 8px; cursor: pointer;
+        .subtitle {
+            font-size: 13px;
+            color: #2563eb;
+            line-height: 1.55;
+            margin-bottom: 28px;
         }
-        button:hover { background: #1d4ed8; }
+        hr { border: none; border-top: 1px solid #e5e7eb; margin-bottom: 28px; }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px 36px;
+        }
+        .field label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        .field .hint {
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.45;
+            margin-bottom: 8px;
+        }
+        .field input {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 7px;
+            color: #111827;
+            background: #fff;
+            transition: border-color .15s, box-shadow .15s;
+        }
+        .field input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+        }
+        .btn-clear {
+            background: none;
+            border: none;
+            color: #2563eb;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+            font-family: inherit;
+        }
+        .btn-clear:hover { text-decoration: underline; }
+        .btn-submit {
+            background: #111827;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 11px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background .15s;
+        }
+        .btn-submit:hover { background: #1f2937; }
+        @media (max-width: 580px) {
+            .card { padding: 28px 20px 24px; }
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <form action="/submit" method="post">
-        <h1>Solicitud de trabajo</h1>
+    <div class="card">
+        <!-- Logo TCI -->
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 62" width="175" height="52" aria-label="TCI">
+                <!-- Espiral exterior - gris -->
+                <path d="M31 4 A27 27 0 1 0 4 31" fill="none" stroke="#94a3b8" stroke-width="7" stroke-linecap="round"/>
+                <!-- Espiral media - verde claro -->
+                <path d="M31 12 A19 19 0 1 0 12 31" fill="none" stroke="#86efac" stroke-width="6" stroke-linecap="round"/>
+                <!-- Espiral interior - verde medio -->
+                <path d="M31 20 A11 11 0 1 0 20 31" fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round"/>
+                <!-- Espiral nucleo - verde oscuro -->
+                <path d="M31 27 A4 4 0 1 0 27 31" fill="none" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+                <!-- Texto T -->
+                <line x1="72" y1="14" x2="92" y2="14" stroke="#134e30" stroke-width="5.5" stroke-linecap="round"/>
+                <line x1="82" y1="14" x2="82" y2="48" stroke="#134e30" stroke-width="5.5" stroke-linecap="round"/>
+                <!-- Texto C -->
+                <path d="M115 16 A18 18 0 1 0 115 46" fill="none" stroke="#134e30" stroke-width="5.5" stroke-linecap="round"/>
+                <!-- Texto I -->
+                <line x1="148" y1="14" x2="148" y2="48" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                <!-- Punto final -->
+                <rect x="157" y="42" width="7" height="7" rx="1" fill="#134e30"/>
+            </svg>
+        </div>
 
-        <label for="nombre">Nombre</label>
-        <input id="nombre" name="nombre" type="text" required>
+        <h1>Teletrabajo</h1>
+        <p class="subtitle">Complete la siguiente información, los datos proporcionados serán utilizados únicamente para fines administrativos relacionados con la evaluación y gestión de esta solicitud.</p>
 
-        <label for="apellidos">Apellidos</label>
-        <input id="apellidos" name="apellidos" type="text" required>
+        <hr>
 
-        <label for="correo">Correo electrónico</label>
-        <input id="correo" name="correo" type="email" required>
+        <form action="/submit" method="post">
+            <div class="grid">
+                <div class="field">
+                    <label for="nombre">Nombre</label>
+                    <p class="hint">Ingrese su nombre o nombres.</p>
+                    <input id="nombre" name="nombre" type="text" required>
+                </div>
+                <div class="field">
+                    <label for="apellidos">Apellidos</label>
+                    <p class="hint">Ingrese sus apellidos completos.</p>
+                    <input id="apellidos" name="apellidos" type="text" required>
+                </div>
+                <div class="field">
+                    <label for="correo">Correo electrónico</label>
+                    <p class="hint">Ingrese un correo electrónico activo donde podamos enviar información y notificaciones relacionadas con su solicitud.</p>
+                    <input id="correo" name="correo" type="email" required>
+                </div>
+                <div class="field">
+                    <label for="celular">Celular</label>
+                    <p class="hint">Ingrese un número de celular actualizado para facilitar el contacto y seguimiento de la solicitud.</p>
+                    <input id="celular" name="celular" type="tel" required>
+                </div>
+            </div>
 
-        <label for="celular">Celular</label>
-        <input id="celular" name="celular" type="tel" required>
-
-        <button type="submit">Enviar</button>
-    </form>
+            <div class="footer">
+                <button type="reset" class="btn-clear">&#8635; Borrar formulario</button>
+                <button type="submit" class="btn-submit">Enviar</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>"""
 
@@ -144,9 +261,8 @@ async def submit(
             status_code=500,
         )
 
-        if resp.status_code not in (200, 201):
-            print("ERROR Airtable:", resp.status_code, resp.text)
-        
+    if resp.status_code not in (200, 201):
+        print("ERROR Airtable:", resp.status_code, resp.text)
         return HTMLResponse(
             f"<h2>Error Airtable {resp.status_code}</h2>"
             f"<pre>{resp.text}</pre>"
