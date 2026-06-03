@@ -70,7 +70,7 @@ async def form():
 </head>
 <body>
     <form action="/submit" method="post">
-        <h1>Formulario de contacto</h1>
+        <h1>Solicitud de trabajo</h1>
 
         <label for="nombre">Nombre</label>
         <input id="nombre" name="nombre" type="text" required>
@@ -144,8 +144,9 @@ async def submit(
             status_code=500,
         )
 
-    if resp.status_code not in (200, 201):
-        print("ERROR Airtable:", resp.status_code, resp.text)
+        if resp.status_code not in (200, 201):
+            print("ERROR Airtable:", resp.status_code, resp.text)
+        
         return HTMLResponse(
             f"<h2>Error Airtable {resp.status_code}</h2>"
             f"<pre>{resp.text}</pre>"
