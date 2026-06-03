@@ -132,7 +132,7 @@ async def submit(
         # Si Airtable rechaza, mostramos el error para poder diagnosticarlo.
         print("ERROR Airtable:", resp.status_code, resp.text)
         return HTMLResponse(
-            "<h2>Hubo un problema al guardar. Inténtalo de nuevo.</h2>",
+            f"<h2>DEBUG Airtable {resp.status_code}</h2><pre>{resp.text}</pre>",
             status_code=500,
         )
 
