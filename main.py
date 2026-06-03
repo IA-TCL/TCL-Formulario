@@ -4,8 +4,10 @@ from urllib.parse import quote
 import requests
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # --- Configuracion (se lee de variables de entorno en Render) ---
 AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
@@ -58,7 +60,15 @@ async def form():
             max-width: 820px;
             box-shadow: 0 4px 28px rgba(0,0,0,.10);
         }
-        .logo { margin-bottom: 28px; }
+        .logo {
+            margin-bottom: 28px; 
+        }
+
+        .logo-img {
+            height: auto;
+            width: 180px;
+            display: block;
+        }
         h1 {
             font-size: 30px;
             font-weight: 800;
@@ -147,27 +157,7 @@ async def form():
     <div class="card">
         <!-- Logo TCI -->
         <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 76" width="210" height="80" aria-label="TCI">
-                <!-- ESPIRAL: 4 arcos de 270° entrelazados, centro (36,40), radio 23 -->
-                <!-- Gris (fondo) -->
-                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#8195a4" stroke-width="9" stroke-linecap="round"/>
-                <!-- Verde claro (rotado 90°) -->
-                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#8dd09b" stroke-width="9" stroke-linecap="round" transform="rotate(90 36 40)"/>
-                <!-- Menta (rotado 180°) -->
-                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#7ec8bf" stroke-width="9" stroke-linecap="round" transform="rotate(180 36 40)"/>
-                <!-- Verde oscuro (frente, rotado 270°) -->
-                <path d="M 59 40 A 23 23 0 1 1 36 17" fill="none" stroke="#143828" stroke-width="9" stroke-linecap="round" transform="rotate(270 36 40)"/>
-                <!-- T: cuadrado acento, barra horizontal, palo vertical -->
-                <rect x="87" y="7"  width="8"  height="8"  fill="#143828"/>
-                <rect x="79" y="18" width="34" height="7"  fill="#143828"/>
-                <rect x="93" y="25" width="7"  height="41" fill="#143828"/>
-                <!-- C: semicirculo gris, abre a la derecha -->
-                <path d="M 145 18 A 25 25 0 0 0 145 68" fill="none" stroke="#8195a4" stroke-width="8" stroke-linecap="butt"/>
-                <!-- I: barra vertical gris -->
-                <rect x="161" y="18" width="8" height="50" fill="#8195a4"/>
-                <!-- Punto: cuadrado verde oscuro -->
-                <rect x="178" y="59" width="10" height="10" fill="#143828"/>
-            </svg>
+            <img src="/static/logo.png" alt="TCI" class="logo-img">
         </div>
 
         <h1>Teletrabajo</h1>
