@@ -1,16 +1,16 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import RedirectResponse
 from urllib.parse import urlencode
 import requests
 
 app = FastAPI()
 
-# URL de EMBED del formulario (con /embed/, no solo /form).
-# Se obtiene en Airtable: "Share form" -> "Embed this form on your site".
-EMBED_URL = "https://airtable.com/embed/appLVSEg1Y2zIwvuM/pagwbdSKFwHyLLTTE/form"
+# URL del formulario de Airtable (redireccion directa).
+# Los campos ocultos (hide_) SI se guardan con este metodo.
+FORM_URL = "https://airtable.com/appLVSEg1Y2zIwvuM/pagwbdSKFwHyLLTTE/form"
 
 
-@app.get("/form", response_class=HTMLResponse)
+@app.get("/form")
 async def form(request: Request):
 
     forwarded = request.headers.get("x-forwarded-for")
@@ -47,22 +47,6 @@ async def form(request: Request):
     # Quitamos los valores None para no enviar "None" como texto en la URL.
     params = {k: v for k, v in params.items() if v is not None}
 
-    iframe_src = f"{EMBED_URL}?{urlencode(params)}"
-
-    return f"""<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulario</title>
-    <style>
-        html, body {{ margin: 0; height: 100%; }}
-        iframe {{ width: 100%; height: 100vh; border: 0; }}
-    </style>
-</head>
-<body>
-    <iframe src="{iframe_src}"
-            sandbox="allow-scripts allow-forms allow-same-origin allow-popups">
-    </iframe>
-</body>
-</html>"""
+    return RedirectResponse(
+        f"{FORM_URL}?{urlencode(params)}"
+    )
