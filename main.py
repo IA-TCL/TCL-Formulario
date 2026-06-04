@@ -443,6 +443,9 @@ async def gracias():
     </style>
 </head>
 <body>
+<div class="logo">
+            <img src="/static/logo.png" alt="TCI" class="logo-img">
+        </div>
     <div class="card">
         <h1>¡Gracias!</h1>
         <p>Tu información se ha enviado correctamente.</p>
