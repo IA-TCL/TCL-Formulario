@@ -303,7 +303,7 @@ async def form():
             <img src="/static/logo.png" alt="TCI" class="logo-img">
         </div>
 
-        <h1>Registro de Inicio de Jornada de Trabajo Remoto o Lugar Autorizado</h1>
+        <h1>Registro de Lugar de Trabajo e Inicio de Jornada</h1>
         <p class="subtitle">Complete el formulario para reportar su ingreso y lugar de trabajo al inicio de la jornada.</p>
 
         <hr>
