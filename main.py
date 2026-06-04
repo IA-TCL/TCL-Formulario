@@ -16,19 +16,32 @@ AIRTABLE_TABLE = os.getenv("AIRTABLE_TABLE", "")  # nombre de la tabla, ej: "Res
 
 
 def geolocalizar(request: Request) -> dict:
-    """Obtiene la ubicacion del visitante a partir de su IP."""
     forwarded = request.headers.get("x-forwarded-for")
+
     if forwarded:
         user_ip = forwarded.split(",")[0].strip()
     else:
         user_ip = request.client.host
 
     try:
-        return requests.get(
-            f"https://ipapi.co/{user_ip}/json/",
-            timeout=5,
-        ).json()
-    except Exception:
+        response = requests.get(
+            f"https://ipwho.is/{user_ip}",
+            timeout=5
+        )
+
+        data = response.json()
+
+        return {
+            "city": data.get("city"),
+            "region": data.get("region"),
+            "country_name": data.get("country"),
+            "ip": data.get("ip"),
+            "latitude": data.get("latitude"),
+            "longitude": data.get("longitude"),
+        }
+
+    except Exception as e:
+        print("ERROR GEO:", e)
         return {}
 
 
