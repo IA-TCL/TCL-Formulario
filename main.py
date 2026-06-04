@@ -181,7 +181,7 @@ async def form():
         <form action="/submit" method="post">
             <div class="grid">
                 <div class="field">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre">Nombres</label>
                     <p class="hint">Ingrese su nombre o nombres.</p>
                     <input id="nombre" name="nombre" type="text" required>
                 </div>
@@ -191,14 +191,14 @@ async def form():
                     <input id="apellidos" name="apellidos" type="text" required>
                 </div>
                 <div class="field">
-                    <label for="correo">Correo electrónico</label>
-                    <p class="hint">Ingrese un correo electrónico activo donde podamos enviar información y notificaciones relacionadas con su solicitud.</p>
+                    <label for="correo">Correo corporativo</label>
+                    <p class="hint">Ingrese tu correo corporativo activo donde se enviará la información y notificaciones relacionadas con su solicitud.</p>
                     <input id="correo" name="correo" type="email" required>
                 </div>
                 <div class="field">
-                    <label for="celular">Celular</label>
-                    <p class="hint">Ingrese un número de celular actualizado para facilitar el contacto y seguimiento de la solicitud.</p>
-                    <input id="celular" name="celular" type="tel" required>
+                    <label for="lugar_trabajo">Lugar de trabajo</label>
+                    <p class="hint">Ingrese el lugar en donde prefiere trabajar.</p>
+                    <input id="lugar_trabajo" name="lugar_trabajo" type="text" required>
                 </div>
             </div>
 
@@ -218,7 +218,7 @@ async def submit(
     nombre: str = Form(...),
     apellidos: str = Form(...),
     correo: str = Form(...),
-    celular: str = Form(...),
+    lugar_trabajo: str = Form(...),
 ):
     """Recibe el formulario, anade la ubicacion por detras y guarda en Airtable."""
     geo = geolocalizar(request)
@@ -228,7 +228,7 @@ async def submit(
         "Nombre": nombre,
         "Apellidos": apellidos,
         "Correo electrónico": correo,
-        "Celular": celular,
+        "Lugar de trabajo": lugar_trabajo,
         # Ubicacion anadida en el servidor (el usuario nunca la ve)
         "city": geo.get("city"),
         "region": geo.get("region"),
