@@ -312,7 +312,7 @@ async def form():
         <form action="/submit" method="post">
             <div class="grid">
                 <div class="field">
-                    <label for="nombre">Nombres</label>
+                    <label for="nombre" style="font-style: italic;">Nombres</label>
                     <p class="hint" style="font-style: italic;">Ingrese su nombre o nombres.</p>
                     <input id="nombre" name="nombre" type="text" required>
                 </div>
