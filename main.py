@@ -243,6 +243,8 @@ async def submit(
     )
 
     try:
+        print("GEO:", geo)
+        print("FIELDS:", fields)    
         resp = requests.post(url, json=payload, headers=headers, timeout=10)
     except Exception as exc:
         print("EXCEPCION al llamar Airtable:", exc)
