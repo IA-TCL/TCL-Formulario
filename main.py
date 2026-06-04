@@ -305,7 +305,7 @@ async def form():
         </div>
 
         <h1>Registro de Lugar de Trabajo e Inicio de Jornada</h1>
-        <p class="subtitle">Complete el formulario para reportar su ingreso y lugar de trabajo al inicio de la jornada.</p>
+        <p class="subtitle" style="font-style: italic;">Complete el formulario para reportar su ingreso y lugar de trabajo al inicio de la jornada.</p>
 
         <hr>
 
