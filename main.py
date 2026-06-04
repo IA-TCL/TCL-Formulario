@@ -9,6 +9,11 @@ from fastapi.staticfiles import StaticFiles
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
+@app.get("/")
+async def root():
+    return RedirectResponse("/form")
+
 # --- Configuracion (se lee de variables de entorno en Render) ---
 AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
 AIRTABLE_BASE_ID = os.getenv("AIRTABLE_BASE_ID", "appLVSEg1Y2zIwvuM")
