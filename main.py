@@ -335,10 +335,17 @@ async def form():
 
             <div class="footer">
                 <button type="reset" class="btn-clear">&#8635; Borrar formulario</button>
-                <button type="submit" class="btn-submit">Enviar</button>
+                <button type="submit" class="btn-submit" id="btn-submit">Enviar</button>
             </div>
         </form>
     </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            var btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Enviando…';
+        });
+    </script>
 </body>
 </html>"""
 
