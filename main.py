@@ -312,22 +312,22 @@ async def form():
         <form action="/submit" method="post">
             <div class="grid">
                 <div class="field">
-                    <label for="nombre" style="font-style: italic;">Nombres</label>
+                    <label for="nombre">Nombres</label>
                     <p class="hint" style="font-style: italic;">Ingrese su nombre o nombres.</p>
                     <input id="nombre" name="nombre" type="text" required>
                 </div>
                 <div class="field">
-                    <label for="apellidos" style="font-style: italic;">Apellidos</label>
+                    <label for="apellidos">Apellidos</label>
                     <p class="hint" style="font-style: italic;">Ingrese sus apellidos completos.</p>
                     <input id="apellidos" name="apellidos" type="text" required>
                 </div>
                 <div class="field">
-                    <label for="correo" style="font-style: italic;">Correo corporativo</label>
+                    <label for="correo"">Correo corporativo</label>
                     <p class="hint" style="font-style: italic;">Ingrese su correo corporativo.</p>
                     <input id="correo" name="correo" type="email" required>
                 </div>
                 <div class="field">
-                    <label for="lugar_trabajo" style="font-style: italic;">Lugar de trabajo</label>
+                    <label for="lugar_trabajo"">Lugar de trabajo</label>
                     <p class="hint" style="font-style: italic;">Especifique si se encuentra trabajando desde casa, una oficina o una sede autorizada.</p>
                     <input id="lugar_trabajo" name="lugar_trabajo" type="text" required>
                 </div>
