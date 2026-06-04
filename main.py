@@ -303,8 +303,8 @@ async def form():
             <img src="/static/logo.png" alt="TCI" class="logo-img">
         </div>
 
-        <h1>Teletrabajo</h1>
-        <p class="subtitle">Complete la siguiente información, los datos proporcionados serán utilizados únicamente para fines administrativos relacionados con la evaluación y gestión de esta solicitud.</p>
+        <h1>Registro de Inicio de Jornada de teletrabajo o lugar autorizado</h1>
+        <p class="subtitle">Complete el formulario para reportar su ingreso y lugar de trabajo al inicio de la jornada.</p>
 
         <hr>
 
@@ -322,12 +322,12 @@ async def form():
                 </div>
                 <div class="field">
                     <label for="correo">Correo corporativo</label>
-                    <p class="hint">Ingrese tu correo corporativo activo donde se enviará la información y notificaciones relacionadas con su solicitud.</p>
+                    <p class="hint">Ingrese su correo corporativo.</p>
                     <input id="correo" name="correo" type="email" required>
                 </div>
                 <div class="field">
                     <label for="lugar_trabajo">Lugar de trabajo</label>
-                    <p class="hint">Ingrese el lugar en donde prefiere trabajar.</p>
+                    <p class="hint">Especifique si se encuentra trabajando desde casa, una oficina o una sede autorizada.</p>
                     <input id="lugar_trabajo" name="lugar_trabajo" type="text" required>
                 </div>
             </div>
