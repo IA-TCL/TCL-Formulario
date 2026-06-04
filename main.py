@@ -434,11 +434,11 @@ async def gracias():
     <title>¡Gracias!</title>
     <style>
         body { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-               background: #f4f5f7; margin: 0; height: 100vh;
+               background: #2A4038; margin: 0; height: 100vh;
                display: flex; align-items: center; justify-content: center; }
-        .card { background: #fff; padding: 40px; border-radius: 12px; text-align: center;
+        .card { background: #dde3ea; padding: 40px; border-radius: 12px; text-align: center;
                 box-shadow: 0 2px 12px rgba(0,0,0,.08); }
-        h1 { color: #16a34a; margin: 0 0 8px; }
+        h1 { color: #4DC999; margin: 0 0 8px; }
         p { color: #4b5563; margin: 0; }
     </style>
 </head>
