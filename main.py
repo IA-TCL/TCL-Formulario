@@ -345,6 +345,12 @@ async def form():
             btn.disabled = true;
             btn.textContent = 'Enviando…';
         });
+
+        document.querySelectorAll('input[type="text"]').forEach(function(input) {
+            input.addEventListener('input', function() {
+                this.value = this.value.replace(/[0-9]/g, '');
+            });
+        });
     </script>
 </body>
 </html>"""
