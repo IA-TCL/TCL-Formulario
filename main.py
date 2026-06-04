@@ -143,8 +143,10 @@ def geolocalizar(request: Request) -> dict:
     print("Ningún proveedor respondió correctamente")
 
     return {}
-    @app.get("/test-geo")
-    async def test_geo():
+
+
+@app.get("/test-geo")
+async def test_geo():
     import requests
 
     urls = [
