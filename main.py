@@ -2,7 +2,7 @@ import os
 from urllib.parse import quote
 
 import requests
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request, Form, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -11,7 +11,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.api_route("/", methods=["GET", "HEAD"])
-async def root():
+async def root(request: Request):
+    if request.method == "HEAD":
+        return Response(status_code=200)
     return RedirectResponse("/form")
 
 # --- Configuracion (se lee de variables de entorno en Render) ---
