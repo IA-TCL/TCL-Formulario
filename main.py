@@ -242,6 +242,7 @@ async def form():
             color: #6b7280;
             line-height: 1.45;
             margin-bottom: 8px;
+            font-style: italic;
         }
         .field input {
             width: 100%;
@@ -312,22 +313,22 @@ async def form():
             <div class="grid">
                 <div class="field">
                     <label for="nombre">Nombres</label>
-                    <p class="hint">Ingrese su nombre o nombres.</p>
+                    <p class="hint" style="font-style: italic;">Ingrese su nombre o nombres.</p>
                     <input id="nombre" name="nombre" type="text" required>
                 </div>
                 <div class="field">
                     <label for="apellidos">Apellidos</label>
-                    <p class="hint">Ingrese sus apellidos completos.</p>
+                    <p class="hint" style="font-style: italic;">Ingrese sus apellidos completos.</p>
                     <input id="apellidos" name="apellidos" type="text" required>
                 </div>
                 <div class="field">
                     <label for="correo">Correo corporativo</label>
-                    <p class="hint">Ingrese su correo corporativo.</p>
+                    <p class="hint" style="font-style: italic;">Ingrese su correo corporativo.</p>
                     <input id="correo" name="correo" type="email" required>
                 </div>
                 <div class="field">
                     <label for="lugar_trabajo">Lugar de trabajo</label>
-                    <p class="hint">Especifique si se encuentra trabajando desde casa, una oficina o una sede autorizada.</p>
+                    <p class="hint" style="font-style: italic;">Especifique si se encuentra trabajando desde casa, una oficina o una sede autorizada.</p>
                     <input id="lugar_trabajo" name="lugar_trabajo" type="text" required>
                 </div>
             </div>
