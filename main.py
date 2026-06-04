@@ -304,7 +304,7 @@ async def form():
             <img src="/static/logo.png" alt="TCI" class="logo-img">
         </div>
 
-        <h1>Registro de Lugar de Trabajo e Inicio de Jornada</h1>
+        <h1>Registro de Jornada de Trabajo</h1>
         <p class="subtitle" style="font-style: italic;">Complete el formulario para reportar su ingreso y lugar de trabajo al inicio de la jornada.</p>
 
         <hr>
