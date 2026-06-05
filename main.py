@@ -463,7 +463,7 @@ async def gracias():
             text-align: center;
         }
         .logo-img {
-            width: 280px;
+            width: 270px;
             height: auto;
             display: block;
             margin-bottom: 28px;
