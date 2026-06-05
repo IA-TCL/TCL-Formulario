@@ -378,7 +378,7 @@ async def submit(
         # Campos visibles que rellena la persona
         "Nombres": nombre,
         "Apellidos": apellidos,
-        "Correo electrónico": correo,
+        "Correo corporativo": correo,
         "Lugar de trabajo": lugar_trabajo,
         # Ubicacion anadida en el servidor (el usuario nunca la ve)
         "city": geo.get("city"),
