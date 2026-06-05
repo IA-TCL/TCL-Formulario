@@ -376,7 +376,7 @@ async def submit(
 
     fields = {
         # Campos visibles que rellena la persona
-        "Nombre": nombre,
+        "Nombres": nombres,
         "Apellidos": apellidos,
         "Correo electrónico": correo,
         "Lugar de trabajo": lugar_trabajo,
