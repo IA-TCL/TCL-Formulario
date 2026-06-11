@@ -1,15 +1,16 @@
 import os
+from pathlib import Path
 from urllib.parse import quote
 
 import requests
 from fastapi import FastAPI, Request, Form, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+
+TEMPLATES = Path("templates")
 
 
 @app.api_route("/", methods=["GET", "HEAD"])
@@ -185,9 +186,8 @@ async def test_geo():
 
 
 @app.get("/form", response_class=HTMLResponse)
-async def form(request: Request):
-    """Muestra el formulario propio. La ubicacion NO aparece aqui."""
-    return templates.TemplateResponse("form.html", {"request": request})
+async def form():
+    return (TEMPLATES / "form.html").read_text(encoding="utf-8")
 
 
 @app.post("/submit")
@@ -259,5 +259,5 @@ async def submit(
 
 
 @app.get("/gracias", response_class=HTMLResponse)
-async def gracias(request: Request):
-    return templates.TemplateResponse("gracias.html", {"request": request})
+async def gracias():
+    return (TEMPLATES / "gracias.html").read_text(encoding="utf-8")
