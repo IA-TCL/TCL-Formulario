@@ -311,8 +311,8 @@ async def form():
             <img src="/static/logo.png" alt="TCI" class="logo-img">
         </div>
 
-        <h1>Registro de Jornada de Trabajo</h1>
-        <p class="subtitle" style="font-style: italic;">Complete el formulario para reportar su ingreso y lugar de trabajo al inicio de la jornada.</p>
+        <h1>Novedades</h1>
+        <p class="subtitle" style="font-style: italic;">Complete el formulario para reportar su novedad.</p>
 
         <hr>
 
@@ -334,9 +334,9 @@ async def form():
                     <input id="correo" name="correo" type="email" required>
                 </div>
                 <div class="field">
-                    <label for="lugar_trabajo"">Lugar de trabajo</label>
-                    <p class="hint" style="font-style: italic;">Especifique si se encuentra trabajando desde casa, una oficina o una sede autorizada.</p>
-                    <input id="lugar_trabajo" name="lugar_trabajo" type="text" required>
+                    <label for="tipo_novedad"">Tipo de novedad</label>
+                    <p class="hint" style="font-style: italic;">Especifique el tipo de novedad que desea reportar.</p>
+                    <input id="tipo_novedad" name="tipo_novedad" type="text" required>
                 </div>
             </div>
 
@@ -369,7 +369,7 @@ async def submit(
     nombre: str = Form(...),
     apellidos: str = Form(...),
     correo: str = Form(...),
-    lugar_trabajo: str = Form(...),
+    tipo_novedad: str = Form(...),
 ):
     """Recibe el formulario, anade la ubicacion por detras y guarda en Airtable."""
     geo = geolocalizar(request)
@@ -379,7 +379,7 @@ async def submit(
         "Nombres": nombre,
         "Apellidos": apellidos,
         "Correo corporativo": correo,
-        "Lugar de trabajo": lugar_trabajo,
+        "Tipo de novedad": tipo_novedad,
         # Ubicacion anadida en el servidor (el usuario nunca la ve)
         "city": geo.get("city"),
         "region": geo.get("region"),
